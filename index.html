@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- CSS STYLESHEET -->
+    <link rel="stylesheet" href="style.css">
+    <title>Weather</title>
+</head>
+<body>
+    <header class="header">
+        <div class="logo"><a href="https://www.instagram.com/zmyn.17" class="--ff-sans-700">zee.</a></div>
+        <div class="search-container">
+            <input type="text" id="search" class="search --ff-sans-400">
+            <label for="search" class="search-label">
+                <img src="./assets/search-icon.png" alt="search icon">
+            </label>
+        </div>
+    </header>
+    <main>
+        <section>
+            <div class="city-name-date">
+                <h2 class="city-name --ff-sans-700 uppercase">Melbourne</h2>
+                <p class="date --ff-sans-400">MON, 11AM</hp>
+            </div>
+            <div class="temp-container">
+                <img src="./assets/rain.png" alt="rain" class="weather-status">
+                <p class="temp --ff-sans-700">27<span>°C</span></p>
+            </div>
+    
+            <div class="weekdays-temp">
+                <div class="weekly-data">
+                    <h3 class="day --ff-sans-700 uppercase">TUE</h3>
+                    <img src="./assets/sun.png" alt="sunny" class="status">
+                    <p class="day-temp --ff-sans-700"><span>25°</span>/<span>12°</span></p>
+                </div>
+                <div class="weekly-data">
+                    <h3 class="day --ff-sans-700">TUE</h3>
+                    <img src="./assets/sun.png" alt="sunny">
+                    <p class="day-temp --ff-sans-700 uppercase"><span>25°</span>/<span>12°</span></p>
+                </div>
+                <div class="weekly-data">
+                    <h3 class="day --ff-sans-700">TUE</h3>
+                    <img src="./assets/sun.png" alt="sunny">
+                    <p class="day-temp --ff-sans-700 uppercase"><span>25°</span>/<span>12°</span></p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- SCRIPT  -->
+    <script src="./index.js"></script>
+</body>
+</html>
