@@ -32,7 +32,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: var(--clr-bg);
-    color: #fff;
+    color: var(--clr-white);
     font-family: var(--ff-sans);
 }
 
@@ -70,7 +70,7 @@ body {
     width: 100px;
     display: none;
     color: var(--clr-white);
-    font-size: 1em;
+    font-size: .9em;
 }
 
 .search-label {
@@ -97,6 +97,7 @@ section {
     margin: 0;
 }
 
+
 .date {
     font-size: 1.5em;
 }
@@ -106,7 +107,6 @@ section {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0;
 }
 
 .temp-container img {
@@ -115,32 +115,29 @@ section {
 }
 
 .temp {
-    font-size: 6rem;
+    font-size: 7rem;
     padding: 0;
     margin: 0;
+    height: 100%;
+    text-align: center;
 }
 
-.weekly-data {
+.extra-info {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2%;
+    gap: 35%;
 }
 
-.weekly-data h3,
-.weekly-data p {
-    font-size: 1em;
+.extra-info img {
+    width: 80px;
+    aspect-ratio: 1;
+    margin: 10% 0;
 }
 
-.weekly-data p span {
-    padding: 0 .1em;
+.extra-info p {
+    font-size: 1.8em;
+    margin: -8px;
 }
-
-.weekly-data img {
-    width: 50px;
-    height: 50px;
-}
-
-
 
 
