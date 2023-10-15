@@ -16,10 +16,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const humidity = document.querySelector('.humidity-lvl');
     const windSpeed = document.querySelector('.wind-speed');
 
+    // Error field
+    const errorContainer = document.querySelector('.error');
+    errorContainer.innerHTML = '';
+
     // DEFAULT WEATHER DATA OF MELBOURNE START
     
     // call api for melbourne
-    const melbrnData = `http://api.openweathermap.org/data/2.5/weather?q=Melbourne&appid=${apiKey}`;
+    const melbrnData = `http://api.openweathermap.org/data/2.5/weather?lat=-37.840935&lon=144.946457&appid=${apiKey}`;
     fetch(melbrnData)
         .then(res => res.json())
         .then(data => {
@@ -30,7 +34,15 @@ document.addEventListener('DOMContentLoaded', function() {
             } else if (data.weather[0].main === 'Rain') {
                 weatherIcon.src = 'assets/rain.png';
             } else if (data.weather[0].main === 'Clouds') {
-                weatherIcon.src = 'assets/windy.png';
+                weatherIcon.src = 'assets/cloudy.png';
+            } else if (data.weather[0].main === 'Mist') {
+                weatherIcon.src = 'assets/mist.png';
+            } else if (data.weather[0].main === 'Snow') {
+                weatherIcon.src = 'assets/snow.png';
+            } else if (data.weather[1].description === 'shower rain') {
+                weatherIcon.src = 'assets/shower.png';
+            } else if (data.weather[0].main === 'Thunderstorm') {
+                weatherIcon.src = 'assets/thunder.png';
             }
 
             temperature.innerHTML = Math.floor(data.main.temp - 273.15) + '°C';
@@ -59,16 +71,21 @@ document.addEventListener('DOMContentLoaded', function() {
     searchInput.addEventListener('keydown', (e) => {
         if(e.key == 'Enter' || e.key == 'Return') {
             e.preventDefault();
-            getCurrentWeatherData(searchInput);
-            searchInput.style.display = 'none';
-            searchInput.value = '';
+            if(searchInput.value !== '') {
+                getCurrentWeatherData(searchInput);
+                searchInput.style.display = 'none';
+                searchInput.value = '';
+                errorContainer.innerHTML = '';
+            } else {
+                errorContainer.innerHTML = 'Please enter correct city name!';
+            }
         }
     });
 
     // 2. Once entered, remove the input field
     search.addEventListener('click', () => {
         if(searchInput.value !== ''){
-            getWeatherData(searchInput);
+            getWeatherData(searchInput.value);
             searchInput.style.display = 'none';
             searchInput.value = '';
         }
@@ -78,26 +95,33 @@ document.addEventListener('DOMContentLoaded', function() {
         const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city.value}&appid=${apiKey}`);
         let data = await response.json();
         
-        console.log(data);
-
         city_name.innerHTML = data.name;
-        
-        // Getting the timezone of the city
-        getTimezone(data.coord.lat, data.coord.lon);
-
-        // weather status field - img element
-        if (data.weather[0].main === 'Clear') {
-            weatherIcon.src = 'assets/sun.png';
-        } else if (data.weather[0].main === 'Rain') {
-            weatherIcon.src = 'assets/rain.png';
-        } else if (data.weather[0].main === 'Clouds') {
-            weatherIcon.src = 'assets/windy.png';
-        }
-        
-        // temperature field
-        temperature.innerHTML = Math.floor(data.main.temp - 273.15) + '°C';
-        humidity.innerHTML = Math.floor(data.main.humidity) + '%';
-        windSpeed.innerHTML = data.wind.speed + 'm/s'; 
+            
+            // Getting the timezone of the city
+            getTimezone(data.coord.lat, data.coord.lon);
+    
+            // weather status field - img element
+            if (data.weather[0].main === 'Clear') {
+                weatherIcon.src = 'assets/sun.png';
+            } else if (data.weather[0].main === 'Rain') {
+                weatherIcon.src = 'assets/rain.png';
+            } else if (data.weather[0].main === 'Clouds') {
+                weatherIcon.src = 'assets/cloudy.png';
+            } else if (data.weather[0].main === 'Mist') {
+                weatherIcon.src = 'assets/mist.png';
+            } else if (data.weather[0].main === 'Snow') {
+                weatherIcon.src = 'assets/snow.png';
+            } else if (data.weather[0].description === 'shower rain') {
+                weatherIcon.src = 'assets/shower.png';
+            } else if (data.weather[0].main === 'Thunderstorm') {
+                weatherIcon.src = 'assets/thunder.png';
+            }
+                
+            // temperature field
+            temperature.innerHTML = Math.floor(data.main.temp - 273.15) + '°C';
+            humidity.innerHTML = Math.floor(data.main.humidity) + '%';
+            windSpeed.innerHTML = data.wind.speed + 'm/s'; 
+            
     }
 
     async function getTimezone(lat, lng) {
@@ -108,8 +132,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const data = await res.json();
             
             if(data.status === 'OK') {
-                console.log(data);
-                
                 // Format the time as 'MON 11AM'
                 const rawDate = new Date(data.formatted);
                 const options = {
@@ -120,7 +142,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 };
                 const newDate = rawDate.toLocaleDateString('en-US', options);
                 date.innerHTML = newDate;
-                console.log(newDate);
             } else {
                 throw new Error('Time zone data not available');
             }
@@ -130,5 +151,3 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
 });
-
-
