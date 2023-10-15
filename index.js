@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const apiKey = '82192cd41da5bac0a2640aff81a620e0';
+    const weatherApiKey = process.env.WEATHER_API_KEY;
     // Search Icon
     const search = document.querySelector('.search-label');
 
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // DEFAULT WEATHER DATA OF MELBOURNE START
     
     // call api for melbourne
-    const melbrnData = `http://api.openweathermap.org/data/2.5/weather?lat=-37.840935&lon=144.946457&appid=${apiKey}`;
+    const melbrnData = `http://api.openweathermap.org/data/2.5/weather?lat=-37.840935&lon=144.946457&appid=${weatherApiKey}`;
     fetch(melbrnData)
         .then(res => res.json())
         .then(data => {
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     async function getCurrentWeatherData(city) {
-        const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city.value}&appid=${apiKey}`);
+        const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city.value}&appid=${weatherApiKey}`);
         let data = await response.json();
         
         city_name.innerHTML = data.name;
@@ -125,8 +125,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     async function getTimezone(lat, lng) {
-        const apiKey = 'Y5LD8RBAD95O';
-        const url = `http://api.timezonedb.com/v2.1/get-time-zone?key=${apiKey}&format=json&by=position&lat=${lat}&lng=${lng}`;
+        const timezoneApiKey = process.env.TIMEZONE_API_KEY;
+        const url = `http://api.timezonedb.com/v2.1/get-time-zone?key=${timezoneApiKey}&format=json&by=position&lat=${lat}&lng=${lng}`;
         try {
             const res = await fetch(url);
             const data = await res.json();
