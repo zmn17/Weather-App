@@ -1,3 +1,4 @@
+require('dotenv').config();
 document.addEventListener('DOMContentLoaded', function() {
     const weatherApiKey = process.env.WEATHER_API_KEY;
     // Search Icon
