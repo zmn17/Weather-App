@@ -29,20 +29,28 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             city_name.innerHTML = data.name;
             
+            // weather status field - img element
             if (data.weather[0].main === 'Clear') {
                 weatherIcon.src = 'assets/sun.png';
+                weatherIcon.alt = 'clear sky';
             } else if (data.weather[0].main === 'Rain') {
                 weatherIcon.src = 'assets/rain.png';
+                weatherIcon.alt = 'rain';
             } else if (data.weather[0].main === 'Clouds') {
                 weatherIcon.src = 'assets/cloudy.png';
+                weatherIcon.alt = 'cloud';
             } else if (data.weather[0].main === 'Mist') {
                 weatherIcon.src = 'assets/mist.png';
+                weatherIcon.alt = 'mist';
             } else if (data.weather[0].main === 'Snow') {
                 weatherIcon.src = 'assets/snow.png';
-            } else if (data.weather[1].description === 'shower rain') {
+                weatherIcon.alt = 'snow';
+            } else if (data.weather[0].description === 'shower rain') {
                 weatherIcon.src = 'assets/shower.png';
+                weatherIcon.alt = 'shower rain';
             } else if (data.weather[0].main === 'Thunderstorm') {
                 weatherIcon.src = 'assets/thunder.png';
+                weatherIcon.alt = 'thunder';
             }
 
             temperature.innerHTML = Math.floor(data.main.temp - 273.15) + '°C';
@@ -103,18 +111,25 @@ document.addEventListener('DOMContentLoaded', function() {
             // weather status field - img element
             if (data.weather[0].main === 'Clear') {
                 weatherIcon.src = 'assets/sun.png';
+                weatherIcon.alt = 'clear sky';
             } else if (data.weather[0].main === 'Rain') {
                 weatherIcon.src = 'assets/rain.png';
+                weatherIcon.alt = 'rain';
             } else if (data.weather[0].main === 'Clouds') {
                 weatherIcon.src = 'assets/cloudy.png';
+                weatherIcon.alt = 'cloud';
             } else if (data.weather[0].main === 'Mist') {
                 weatherIcon.src = 'assets/mist.png';
+                weatherIcon.alt = 'mist';
             } else if (data.weather[0].main === 'Snow') {
                 weatherIcon.src = 'assets/snow.png';
+                weatherIcon.alt = 'snow';
             } else if (data.weather[0].description === 'shower rain') {
                 weatherIcon.src = 'assets/shower.png';
+                weatherIcon.alt = 'shower rain';
             } else if (data.weather[0].main === 'Thunderstorm') {
                 weatherIcon.src = 'assets/thunder.png';
+                weatherIcon.alt = 'thunder';
             }
                 
             // temperature field
