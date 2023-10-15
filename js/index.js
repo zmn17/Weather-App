@@ -1,7 +1,8 @@
-require('dotenv').config();
-document.addEventListener('DOMContentLoaded', function() {
-    const weatherApiKey = process.env.WEATHER_API_KEY;
-    // Search Icon
+const apiKeys = require('./apiKeys');
+const weatherApi = apiKeys.WEATHER_APIKEY;
+const timeApi = apiKeys.TIME_APIKEY;
+// const weatherApiKey = '82192cd41da5bac0a2640aff81a620e0';
+    // Search Icon  
     const search = document.querySelector('.search-label');
 
     // Input value - 1. Get the input value from search 
@@ -24,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // DEFAULT WEATHER DATA OF MELBOURNE START
     
     // call api for melbourne
-    const melbrnData = `http://api.openweathermap.org/data/2.5/weather?lat=-37.840935&lon=144.946457&appid=${weatherApiKey}`;
+    const melbrnData = `http://api.openweathermap.org/data/2.5/weather?lat=-37.840935&lon=144.946457&appid=${weatherApi}`;
     fetch(melbrnData)
         .then(res => res.json())
         .then(data => {
@@ -101,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     async function getCurrentWeatherData(city) {
-        const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city.value}&appid=${weatherApiKey}`);
+        const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city.value}&appid=${weatherApi}`);
         let data = await response.json();
         
         city_name.innerHTML = data.name;
@@ -141,8 +142,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     async function getTimezone(lat, lng) {
-        const timezoneApiKey = process.env.TIMEZONE_API_KEY;
-        const url = `http://api.timezonedb.com/v2.1/get-time-zone?key=${timezoneApiKey}&format=json&by=position&lat=${lat}&lng=${lng}`;
+        // const timezoneApiKey = 'Y5LD8RBAD95O';
+        const url = `http://api.timezonedb.com/v2.1/get-time-zone?key=${timeApi}&format=json&by=position&lat=${lat}&lng=${lng}`;
         try {
             const res = await fetch(url);
             const data = await res.json();
@@ -165,5 +166,3 @@ document.addEventListener('DOMContentLoaded', function() {
             throw new Error('Error fetching time zone data: ' + err.message);
         }
     }
-    
-});
