@@ -16,16 +16,19 @@ const limiter = rateLimit({
 app.use(limiter);
 app.set('trust proxy', 1);
 
-// Set static folder
-app.use(express.static('public'));
-app.use(express.static('../'));
-
-
-// Routes
-app.use('/api', require('./routes'));
 
 // Enable cors
 app.use(cors());
+
+// Set static folder
+app.use(express.static('public'));
+
+
+// Routes
+app.use('/api', require('./routes/index'));
+app.use('/timezone', require('./routes/timezone'));
+
+
 
 app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
 

@@ -12,7 +12,7 @@ const WEATHER_API_VALUE = process.env.WEATHER_API_VALUE
 // Initialize cache
 let cache = apicache.middleware;
 
-router.get('/', cache('1 minutes'), async (req, res) => {
+router.get('/', cache('2 minutes'), async (req, res) => {
     try {
         const params = new URLSearchParams({
             [WEATHER_KEY_NAME]: WEATHER_API_VALUE,
