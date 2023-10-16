@@ -18,7 +18,7 @@ Current Weather: Display current weather information for a specified location, i
 
 # To run this application on your local machine, follow the steps below:
   Clone the Repository:
-  git clone https://github.com/yourusername/weather-nodejs-web-app.git
+  git clone https://github.com/zmn17/Weather-App.git
   cd Weather-App
   
 # Install Dependencies:
