@@ -19,6 +19,7 @@
     "needle": "^3.2.0"
   },
   "devDependencies": {
+    "netlify-cli": "^16.7.0",
     "nodemon": "^3.0.1"
   }
 }
