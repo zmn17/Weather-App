@@ -45,8 +45,8 @@ Current Weather: Display current weather information for a specified location, i
   
 # Screenshots
   Weather App Screenshot
-  <img width="1353" alt="1" src="https://github.com/zmn17/Weather-App/assets/101510148/950f1fa4-e4d4-46de-ad34-96d7713c0976">
-  <img width="1353" alt="2" src="https://github.com/zmn17/Weather-App/assets/101510148/aacb408f-9e28-4848-85ab-4e9d21462b8f">
+  <img width="1353" alt="1" src="./public/assets/1.png">
+  <img width="1353" alt="2" src="./public/assets/2.png">
 
 # Contact
   Instagram: https://www.instagram.com/zmyn.17
